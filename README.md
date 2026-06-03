@@ -101,6 +101,7 @@ All computation lives in pure functions in `api/src/readiness.ts`, so routes are
 
 ## What I'd improve with more time
 
+- **Program fit from profile data**: registration already stores `educationLevel` (high school through master's) and optional `testScores` (e.g. SAT as a named score), but the programs list is the same for everyone. With more time I'd add matching logic so education level steers which programs are shown or ranked — e.g. high school → undergraduate (BA/BS), bachelor's → graduate (MS/MA/PhD), master's → doctoral or specialized graduate tracks — and SAT (or ACT/GRE) ranges on each program would filter or flag realistic options instead of treating every seeded program as equally appropriate.
 - **Counselor role**: the field exists but anyone signed in as the student can edit it. A real counselor relationship needs a separate user role and a counselor↔student linkage so counselors can read/write their assigned students' notes only.
 - **Token rotation + refresh**: sessions are 30-day fixed tokens; production would issue short-lived access tokens with a refresh flow, and store tokens in HttpOnly cookies rather than `localStorage` to harden against XSS.
 - **Password reset / email verification**: registration accepts any email; there's no verification step and no "forgot password" flow.
