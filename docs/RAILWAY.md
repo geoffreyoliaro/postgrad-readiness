@@ -70,9 +70,9 @@ Without a volume, the database is **wiped on every redeploy**.
 
 On first boot the API runs migrations and seeds four programs when the DB is empty.
 
-### Build & start (usually auto-detected)
+### Build & start (Railpack)
 
-From `api/railway.toml` / `package.json`:
+The API uses **Railpack** (`builder = "RAILPACK"` in `api/railway.toml`). `api/railpack.json` pins **Node 20** and installs `python3`, `make`, and `g++` at build time so `better-sqlite3` can compile via `node-gyp` when no prebuilt binary exists for the detected Node version.
 
 - **Build**: `npm ci && npm run build`
 - **Start**: `npm start` → `node dist/server.js`
@@ -175,10 +175,16 @@ railway up
 - Redeploy **web** after changing the variable.
 - In the browser devtools → Network, requests should go to the Railway API host, not `localhost:3001`.
 
+### API build fails on `better-sqlite3` / `node-gyp`
+
+- Confirm `api/railway.toml` uses `builder = "RAILPACK"` (not `NIXPACKS`).
+- Confirm `api/railpack.json` exists with `buildAptPackages`: `python3`, `make`, `g++`.
+- Railpack should use Node **20** via `packages.node` in `railpack.json` (avoids Node 24, which often lacks prebuilt `better-sqlite3` binaries).
+
 ### API crashes on start (`better-sqlite3`)
 
 - Ensure Root Directory is `api` (not repo root).
-- Railway’s Linux builder compiles native modules on `npm ci`; redeploy once if the first build was cached from another OS.
+- Redeploy after fixing the Railpack config so native modules compile on Linux during `npm ci`.
 
 ### Data disappears after redeploy
 
