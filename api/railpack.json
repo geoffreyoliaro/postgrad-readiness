@@ -1,0 +1,7 @@
+{
+  "provider": "node",
+  "packages": {
+    "node": "20"
+  },
+  "buildAptPackages": ["python3", "make", "g++"]
+}
