@@ -36,6 +36,10 @@ npm run dev
 
 Open http://localhost:3000.
 
+## Deploy on Railway
+
+This project can be deployed on [Railway](https://railway.com) as two services (API + Web). See **[docs/RAILWAY.md](docs/RAILWAY.md)** for step-by-step instructions (volumes, env vars, deploy order). Use the `railway_deploy` branch for Railway-specific config files.
+
 The API seeds 4 reproducible programs the first time SQLite is empty (Stanford MS CS, MIT BS EECS, UC Berkeley MS Data, Harvard BA Econ). The DB file defaults to `api/postgrad-eval.db`. Use `DB_FILE=:memory:` for an ephemeral run.
 
 ## Tests
