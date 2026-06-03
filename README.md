@@ -36,7 +36,7 @@ npm run dev
 
 Open http://localhost:3000.
 
-The API seeds 4 reproducible programs the first time SQLite is empty (Stanford MS CS, MIT BS EECS, UC Berkeley MS Data, Harvard BA Econ). The DB file defaults to `api/postgrad-eval.db`. Use `DB_FILE=:memory:` for an ephemeral run.
+The API seeds 9 reproducible programs the first time SQLite is empty (Stanford MS CS, MIT BS EECS, UC Berkeley MS Data, Harvard BA Econ, Columbia MA Journalism, CMU PhD ML, UCLA BS Biology, Yale MA Public Policy, Oxford MS Financial Economics). The DB file defaults to `api/postgrad-eval.db`. Use `DB_FILE=:memory:` for an ephemeral run.
 
 ## Tests
 
